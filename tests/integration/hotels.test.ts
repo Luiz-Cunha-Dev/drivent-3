@@ -436,11 +436,11 @@ it('should respond with status 200 when all is ok', async () => {
   
 });
 
-it('should respond with status 404 when does not has hotels', async () => {
+it('should respond with status 404 when the hotel not exist', async () => {
   await prisma.room.deleteMany()
   await prisma.hotel.deleteMany()
 
-  const result = await server.get("/hotels/1500").set({ Authorization: `Bearer ${token}`})
+  const result = await server.get("/hotels/0").set({ Authorization: `Bearer ${token}`})
   expect(result.status).toBe(404)
 
 });
